@@ -2,7 +2,7 @@
   "name": "website-angular",
   "version": "0.0.0",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./backend/index.js"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
