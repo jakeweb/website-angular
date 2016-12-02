@@ -8,14 +8,14 @@ var users = function() {
     };
     self.getUserByEmail = function(email) {
         console.log('getUserByEmail', email);
-        return db.query("SELECT (email) FROM users WHERE email = ${email};", {
+        return db.query("SELECT * FROM users WHERE email = ${email};", {
             email: email
         });
         // return db.query("SELECT * FROM \"users\" WHERE \"email\" = \'" + email + "\';");
     };
     self.addUser = function(user) {
         console.log('addUser', user);
-        return db.query("INSERT INTO users (${this~}) VALUES ( ${password}, ${email});", user);
+        return db.query("INSERT INTO users (${this~}) VALUES ( ${email} , ${password});", user);
     };
     self.updateUser = function(user) {
         return db.query("UPDATE \"users\" SET \"full_name\" = \'" + user.full_name +

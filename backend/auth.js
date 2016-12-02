@@ -10,12 +10,12 @@ var auth = function() {
             user: {},
             token: ''
         };
+        console.log(data);
         if (bcrypt.compareSync(req.password, data[0].password)) {
             response.user = data[0];
             response.user.password = 'SECRET!!!';
             response.token = createJWT(data);
             return response;
-
         } else {
             return false;
         }
