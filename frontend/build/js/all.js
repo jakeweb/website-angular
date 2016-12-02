@@ -4,5 +4,6 @@
         "satellizer",
         "app.register",
         "app.login"
+
     ]);
 })();

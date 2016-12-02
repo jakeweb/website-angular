@@ -3,7 +3,9 @@
 var gulp = require('gulp'),
     watch = require('gulp-watch'),
     sass = require('gulp-sass'),
-    concat = require('gulp-concat');
+    concat = require('gulp-concat'),
+    angularFilesort = require('gulp-angular-filesort'),
+    inject = require('gulp-inject');
 
 var path = {
     build: { //building files
@@ -11,7 +13,7 @@ var path = {
         css: 'frontend/build/css/'
     },
     copy: { //building files
-        js: 'src/js/'
+        js: 'src/js/**/*.js'
     },
     src: { //source files
         js: ['src/js/**/*.js'], //we need all js files
@@ -25,14 +27,13 @@ var path = {
         js: 'src/js/**/*.js',
         style: 'src/style/**/*.scss',
         concatJS: 'frontend/app/**/*.*'
-    },
-    clean: 'frontend/build'
+    }
 };
 
 /*Tasks*/
 
 gulp.task('style:build', function() {
-    gulp.src(path.src.style) //get main.scss
+    return gulp.src(path.src.style) //get main.scss
         .pipe(sass()) //compile
         .pipe(gulp.dest(path.build.css)) //put compressed files to the build
 });
@@ -42,33 +43,22 @@ gulp.task('js:build', function() {
         .pipe(gulp.dest(path.build.js)) //put compressed files to the build
 });
 
-gulp.task('lib:copy', function() {
-    gulp.src(path.lib.js) //get main.js
-        .pipe(gulp.dest(path.copy.js)) //put compressed files to the build
-});
 
-
-gulp.task('lib:build', function() {
-    gulp.src(path.lib.js) //get main.js
-        .pipe(gulp.dest(path.build.js)) //put compressed files to the build
-});
 
 gulp.task('concat', function() {
     gulp.src(path.src.concatJS)
         .pipe(concat('all.js'))
-        .pipe(gulp.dest(path.build.js))
+        .pipe(gulp.dest(path.build.js));
+    // gulp.src('./frontend/app/app.js')
+    //     .pipe(inject(
+    //         gulp.src([path.copy.js]).pipe(angularFilesort())
+    //     ))
+    //     .pipe(gulp.dest(path.build.js));
 });
 
 gulp.task('watch', function() {
-    watch([path.watch.style], function(event, cb) {
-        gulp.start('style:build');
-    });
-    watch([path.watch.js], function(event, cb) {
-        gulp.start('js:build');
-    });
-    watch([path.watch.concatJS], function(event, cb) {
-        gulp.start('concat');
-    });
+    gulp.watch(path.watch.style, ['style:build']);
+    gulp.watch(path.watch.concatJS, ['js:build']);
 });
 
 
@@ -76,11 +66,8 @@ gulp.task('watch', function() {
 
 gulp.task('build', [
     'js:build',
-    'lib:build',
     'style:build',
-    'lib:copy',
     'concat'
 ]);
 
 gulp.task('default', ['build']);
-gulp.task('watch', ['watch']);
