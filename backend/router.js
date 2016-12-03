@@ -2,6 +2,7 @@ var path = require('path');
 var async = require('async');
 var auth = new(require('./auth'));
 var users = new(require('./db/users'));
+var products = new(require('./db/products'));
 
 var router = {
     init: function init(app) {
@@ -60,13 +61,12 @@ var router = {
             });
         });
         app.post('/product', auth.ensureAuthenticated, function(req, res) {
-            // users.updateUser(req.body).then(function(data) {
-            //     res.status(200).send(data);
-            // }).catch(function(error) {
-            //     console.log(error);
-            //     res.status(500).send(error);
-            // });
-            console.log(req.body);
+            products.addProduct(req.body).then(function(data) {
+                res.status(200).send(data);
+            }).catch(function(error) {
+                console.log(error);
+                res.status(500).send(error);
+            });
         });
         app.get('*', function(req, res) {
             res.status(200).sendFile(path.resolve('frontend/app/index.html'));
