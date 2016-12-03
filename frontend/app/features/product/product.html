@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <form method="post" ng-submit="addProduct()" name="addProductForm">
+            <!-- Title -->
+            <div class="form-group has-feedback">
+                <input class="form-control input-lg" type="text" id="title" name="title" ng-model="product.title" placeholder="Title" ng-maxlength="255" required>
+            </div>
+            <div ng-messages="addProductForm.title.$error" class="help-block">
+                <div ng-message="maxlength" class="text-danger">Message must not exceed 255 characters</div>
+            </div>
+            <!-- Price -->
+            <div class="form-group has-feedback">
+                <input class="form-control input-lg" type="number" id="price" name="price" ng-model="product.price" placeholder="Price" ng-maxlength="255" required>
+            </div>
+            <div ng-messages="addProductForm.price.$error" class="help-block">
+                <div ng-message="maxlength" class="text-danger">Message must not exceed 255 characters</div>
+            </div>
+            <!-- Description -->
+            <div class="form-group has-feedback">
+                <textarea class="form-control input-lg" id="descr" name="descr" ng-model="product.descr" ng-maxlength="1000" required></textarea>
+            </div>
+            <div ng-messages="addProductForm.descr.$error" class="help-block">
+                <div ng-message="maxlength" class="text-danger">Message must not exceed 255 characters</div>
+            </div>
+            <button type="submit" ng-disabled="addProductForm.$invalid" class="btn btn-lg btn-block btn-primary">Add product</button>
+        </form>
+    </div>
+</div>

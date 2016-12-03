@@ -1,8 +1,8 @@
 (function() {
-    angular.module("app.settings").controller('app.settings.settingsController', settingsController);
-    settingsController.$inject = ['$scope', '$location', '$auth', "app.settings.settingsService"];
+    angular.module("app.profile").controller('app.profile.profileController', profileController);
+    profileController.$inject = ['$scope', '$location', '$auth', "app.profile.profileService"];
 
-    function settingsController($scope, $location, $auth, settingsService) {
+    function profileController($scope, $location, $auth, profileService) {
 
         $scope.user = {
         	firstName: localStorage.getItem("firstName"),
@@ -16,7 +16,7 @@
     	$scope.patternPhone = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
 
     	$scope.update = function () {
-    		settingsService.update($scope.user);
+    		profileService.update($scope.user);
     	}
     }
 

@@ -1,8 +1,8 @@
 (function() {
-    angular.module("app.settings").service('app.settings.settingsService', settingsService);
-    settingsService.$inject = ['$location', '$auth', 'app.apiService'];
+    angular.module("app.profile").service('app.profile.profileService', profileService);
+    profileService.$inject = ['$location', '$auth', 'app.apiService'];
 
-    function settingsService($location, $auth, apiService) {
+    function profileService($location, $auth, apiService) {
         this.update = function(user) {
             console.log(user);
             apiService.put("/settings", user).then(function(res) {
@@ -12,7 +12,5 @@
                     console.log(error);
                 });
         }
-
     }
-
 })();

@@ -11,16 +11,13 @@ var users = function() {
         return db.query("SELECT * FROM users WHERE email = ${email};", {
             email: email
         });
-        // return db.query("SELECT * FROM \"users\" WHERE \"email\" = \'" + email + "\';");
     };
     self.addUser = function(user) {
         console.log('addUser', user);
         return db.query("INSERT INTO users (${this~}) VALUES ( ${email} , ${password});", user);
     };
     self.updateUser = function(user) {
-        console.log(user);
-        // return db.query("UPDATE \"users\" SET \"full_name\" = \'" + user.full_name +
-        //     "\', \"password\" = \'" + user.password + "\', \"email\" = \'" + user.email + "\'" + " WHERE \"id\" = " + user.userID + ";");
+        console.log("updateUser", user);
         return db.query("UPDATE users SET email = ${email}, \"firstName\" = ${firstName}, \"lastName\" = ${lastName},  phone= ${phone} WHERE id = ${userID};", user);
     };
 };

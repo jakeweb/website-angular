@@ -5,6 +5,7 @@
         "app.register",
         "app.login",
         "app.main",
-        "app.settings"
+        "app.profile",
+        "app.product"
     ]);
 })();

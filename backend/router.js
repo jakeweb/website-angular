@@ -59,6 +59,15 @@ var router = {
                 res.status(500).send(error);
             });
         });
+        app.post('/product', auth.ensureAuthenticated, function(req, res) {
+            // users.updateUser(req.body).then(function(data) {
+            //     res.status(200).send(data);
+            // }).catch(function(error) {
+            //     console.log(error);
+            //     res.status(500).send(error);
+            // });
+            console.log(req.body);
+        });
         app.get('*', function(req, res) {
             res.status(200).sendFile(path.resolve('frontend/app/index.html'));
         });

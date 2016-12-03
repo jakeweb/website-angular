@@ -48,15 +48,36 @@
                     skipIfLoggedIn: skipIfLoggedIn
                 }
             })
+            .when("/profile", {
+                templateUrl: "./app/features/profile/profile.html",
+                controller: "app.profile.profileController",
+                resolve: {
+                    loginRequired: loginRequired
+                }
+            })
             .when("/settings", {
-                templateUrl: "./app/features/settings/settings.html",
-                controller: "app.settings.settingsController",
+                templateUrl: "./app/features/profile/settings.html",
+                controller: "app.profile.profileController",
+                resolve: {
+                    loginRequired: loginRequired
+                }
+            })
+            .when("/product/add", {
+                templateUrl: "./app/features/product/product.html",
+                controller: "app.product.productController",
+                resolve: {
+                    loginRequired: loginRequired
+                }
+            })
+            .when("/product/edit/:id", {
+                templateUrl: "./app/features/product/product.html",
+                controller: "app.product.productController",
                 resolve: {
                     loginRequired: loginRequired
                 }
             })
             .otherwise({
-                templateUrl: "./app/features/main/main.html"
+                templateUrl: "./app/core/404/404.html"
             });
     }]);
 })();
