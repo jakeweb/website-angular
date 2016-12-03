@@ -29,6 +29,7 @@ var router = {
                         users.addUser(user).then(function() {
                             res.status(200).send("signup successfull");
                         }).catch(function(error) {
+                            console.log(error);
                             res.status(500).send(error);
                         });
                     }
@@ -45,6 +46,14 @@ var router = {
                 } else {
                     res.status(500).send('No user with such email or incorrect password');
                 }
+            }).catch(function(error) {
+                console.log(error);
+                res.status(500).send(error);
+            });
+        });
+        app.put('/settings', auth.ensureAuthenticated, function(req, res) {
+            users.updateUser(req.body).then(function(data) {
+                res.status(200).send(data);
             }).catch(function(error) {
                 console.log(error);
                 res.status(500).send(error);

@@ -3,7 +3,8 @@
         "ngRoute",
         "satellizer",
         "app.register",
-        "app.login"
-
+        "app.login",
+        "app.main",
+        "app.settings"
     ]);
 })();

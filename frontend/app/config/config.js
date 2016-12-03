@@ -27,42 +27,9 @@
 
         $routeProvider
             .when("/", {
-                templateUrl: "./app/features/main/main.html"
+                templateUrl: "./app/features/main/main.html",
+                controller: "app.main.mainController"
             })
-            // .when("/me", {
-            //     templateUrl: "./app/features/profile/views/profile.html",
-            //     controller: "em.profile.profile-controller",
-            //     resolve: {
-            //         loginRequired: loginRequired,
-            //         getCurrentUser: ["userService", function(userService) {
-            //             if (!userService.getUserInfo()) {
-            //                 return userService.getCurrentUser();
-            //             }
-            //         }],
-            //         getCurrentUserEvents: ["userService", function(userService) {
-            //             if (!userService.getCurrentUserEvents()) {
-            //                 return userService.getUserEvents();
-            //             }
-            //         }]
-            //     }
-            // })
-            // .when("/me/settings", {
-            //     templateUrl: "./app/features/profile/views/settings.html",
-            //     controller: "em.profile.profile-controller",
-            //     resolve: {
-            //         loginRequired: loginRequired,
-            //         getCurrentUser: ["userService", function(userService) {
-            //             if (!userService.getUserInfo()) {
-            //                 return userService.getCurrentUser();
-            //             }
-            //         }],
-            //         getCurrentUserEvents: ["userService", function(userService) {
-            //             if (!userService.getCurrentUserEvents()) {
-            //                 return userService.getUserEvents();
-            //             }
-            //         }]
-            //     }
-            // })
             .when("/login", {
                 templateUrl: "./app/features/login/login.html",
                 controller: "app.login.loginController",
@@ -79,6 +46,13 @@
                 controller: "app.register.registerController",
                 resolve: {
                     skipIfLoggedIn: skipIfLoggedIn
+                }
+            })
+            .when("/settings", {
+                templateUrl: "./app/features/settings/settings.html",
+                controller: "app.settings.settingsController",
+                resolve: {
+                    loginRequired: loginRequired
                 }
             })
             .otherwise({

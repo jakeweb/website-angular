@@ -18,10 +18,10 @@ var users = function() {
         return db.query("INSERT INTO users (${this~}) VALUES ( ${email} , ${password});", user);
     };
     self.updateUser = function(user) {
-        return db.query("UPDATE \"users\" SET \"full_name\" = \'" + user.full_name +
-            "\', \"avatar\" = \'" + user.avatar + "\', \"reset_password_token\" = \'" + user.reset_password_token +
-            "\', \"reset_password_expires\" = \'" + user.reset_password_expires + "\', \"password\" = \'" + user.password +
-            "\', \"email\" = \'" + user.email + "\'" + " WHERE \"id\" = " + user.id + ";");
+        console.log(user);
+        // return db.query("UPDATE \"users\" SET \"full_name\" = \'" + user.full_name +
+        //     "\', \"password\" = \'" + user.password + "\', \"email\" = \'" + user.email + "\'" + " WHERE \"id\" = " + user.userID + ";");
+        return db.query("UPDATE users SET email = ${email}, \"firstName\" = ${firstName}, \"lastName\" = ${lastName},  phone= ${phone} WHERE id = ${userID};", user);
     };
 };
 
