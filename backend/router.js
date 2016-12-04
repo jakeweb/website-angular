@@ -68,6 +68,15 @@ var router = {
                 res.status(500).send(error);
             });
         });
+        app.put(baseUrl + '/password', auth.ensureAuthenticated, function(req, res) {
+            req.body.password = auth.hashData(req.body.password);
+            users.updatePassword(req.body).then(function(data) {
+                res.status(200).send(data);
+            }).catch(function(error) {
+                console.log(error);
+                res.status(500).send(error);
+            });
+        });
         app.get(baseUrl + '/products', auth.ensureAuthenticated, function(req, res) {
             products.getProducts(req.body).then(function(data) {
                 console.log(data);

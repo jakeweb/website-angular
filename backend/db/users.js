@@ -18,6 +18,10 @@ var users = function() {
         console.log("updateUser", user);
         return db.query("UPDATE users SET email = ${email}, \"firstName\" = ${firstName}, \"lastName\" = ${lastName},  phone= ${phone} WHERE id = ${userID};", user);
     };
+    self.updatePassword = function(user) {
+        console.log("updateUser", user);
+        return db.query("UPDATE users SET password = ${password} WHERE id = ${userID};", user);
+    };
 };
 
 module.exports = users;

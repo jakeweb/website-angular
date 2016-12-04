@@ -6,9 +6,11 @@
         this.getUserInfo = function() {
             return apiService.get("profile");
         }
-        this.update = function(user) {
-            apiService.put("settings", user).then(function(res) {
-                    console.log(res);
+        this.update = function(url, user) {
+            apiService.put(url, user).then(function(res) {
+                    if (url == "settings") {
+                        localStorage.setItem("user", JSON.stringify(user));
+                    }
                 })
                 .catch(function(error) {
                     console.log(error);

@@ -1,3 +1,3 @@
 (function() {
-    angular.module("app.login", ["ngMessages"]);
+    angular.module("app.login", []);
 })();

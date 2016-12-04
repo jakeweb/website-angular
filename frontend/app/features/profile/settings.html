@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <form method="post" ng-submit="update()" name="settingsForm">
+        <form method="post" ng-submit="updateProfile()" name="settingsForm">
             <!-- First Name -->
             <div class="form-group has-feedback">
                 <input class="form-control input-lg" type="text" id="firstName" name="firstName" ng-model="user.firstName" ng-maxlength="255" placeholder="First Name" value="{{user.firstName}}">
@@ -31,6 +31,8 @@
                 <div ng-message="required" class="text-danger">This field is required</div>
                 <div ng-message="pattern" class="text-danger">Enter a valid phone number</div>
             </div>
+            <!-- Change password modal -->
+            <button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
             <button type="submit" ng-disabled="settingsForm.$invalid" class="btn btn-lg  btn-block btn-success">Save</button>
         </form>
     </div>

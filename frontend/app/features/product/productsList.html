@@ -11,6 +11,7 @@
                         <arrow-sorting ng-if="predicate === 'product.price'"></arrow-sorting>
                     </th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -20,6 +21,13 @@
                     <td>{{ product.price }}</td>
                     <td class="text-center">
                         <a href="/product/edit/{{product.id}}" class="btn btn-primary">Edit product</a>
+                    </td>
+                    <td>
+                        <uib-accordion>
+                            <div uib-accordion-group class="panel-default" heading="Description">
+                                {{product.description}}
+                            </div>
+                        </uib-accordion>
                     </td>
                 </tr>
             </tbody>
