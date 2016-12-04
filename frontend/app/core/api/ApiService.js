@@ -5,7 +5,7 @@
 
     function apiService($http, baseUrl) {
         this.get = function(url, obj) {
-            console.log('apiService.get:', obj);
+            // console.log('apiService.get:', obj);
             return $http({
                 method: 'GET',
                 url: baseUrl + url + '/',

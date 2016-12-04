@@ -24,18 +24,18 @@
             </thead>
             <tbody>
                 <tr ng-repeat="product in products | orderBy:predicate:reverseSort track by $index" class="row-item">
-                    <td>{{ $index+1 }}</td>
+                    <td>{{ ($index+1) + (currentPage - 1)*itemsPerPage }}</td>
                     <td>{{ product.title }}</td>
                     <td>{{ product.price }}</td>
-                    <td class="text-center">
-                        <a href="/product/edit/{{product.id}}" class="btn btn-primary">Edit product</a>
-                    </td>
                     <td>
                         <uib-accordion>
                             <div uib-accordion-group class="panel-default" heading="Description">
                                 {{product.description}}
                             </div>
                         </uib-accordion>
+                    </td>
+                    <td class="text-center">
+                        <a href="/product/edit/{{ ($index+1) + (currentPage - 1)*itemsPerPage }}" class="btn btn-primary">Edit product</a>
                     </td>
                 </tr>
             </tbody>

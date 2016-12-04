@@ -85,10 +85,7 @@
                 templateUrl: "./app/features/product/editProduct.html",
                 controller: "app.product.editProductController",
                 resolve: {
-                    loginRequired: loginRequired,
-                    getProducts: ["app.product.productService", function(productService) {
-                        return productService.getProducts(startItem, itemsPerPage);
-                    }]
+                    loginRequired: loginRequired
                 }
             })
             .otherwise({
