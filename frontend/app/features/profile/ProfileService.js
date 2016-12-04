@@ -10,7 +10,9 @@
             apiService.put(url, user).then(function(res) {
                     if (url == "settings") {
                         localStorage.setItem("user", JSON.stringify(user));
+                        $location.url("/profile");
                     }
+
                 })
                 .catch(function(error) {
                     console.log(error);

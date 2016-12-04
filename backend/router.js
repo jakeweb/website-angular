@@ -10,7 +10,7 @@ var router = {
         app.post(baseUrl + '/auth/signup', function(req, res) {
             async.waterfall([
                     function(done) {
-                        users.getUserByEmail(req.body.email).then(function(data) {
+                        users.getUserByEmail(req.body).then(function(data) {
                             // if email not presented in db
                             if (!data[0]) {
                                 req.body.password = auth.hashData(req.body.password);
