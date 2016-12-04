@@ -16,6 +16,10 @@
                     <div class="form-group has-feedback">
                         <input class="form-control input-lg" type="password" name="password" ng-model="user.password" placeholder="Password" required>
                     </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="remember">Remember Me</label>
+                    </div>
                     <button type="submit" ng-disabled="loginForm.$invalid" class="btn btn-lg  btn-block btn-success">Log in</button>
                 </form>
             </div>

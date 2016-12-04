@@ -10,15 +10,12 @@ var router = {
         app.post('/auth/signup', function(req, res) {
             async.waterfall([
                     function(done) {
-                        console.log('run1');
                         users.getUserByEmail(req.body.email).then(function(data) {
                             // if email not presented in db
-                            console.log(data[0]);
                             if (!data[0]) {
                                 req.body.password = auth.hashData(req.body.password);
                                 done(null, req.body, done);
                             } else {
-                                console.log('Email already used!');
                                 res.status(500).send('Email already used!');
                             }
                         }).catch(function(error) {
@@ -54,7 +51,6 @@ var router = {
         });
         app.get(baseUrl + '/profile', auth.ensureAuthenticated, function(req, res) {
             users.getUserById(req.body.userID).then(function(data) {
-                // console.log(data);
                 delete data[0].password;
                 delete data[0].id;
                 res.status(200).send(data);
