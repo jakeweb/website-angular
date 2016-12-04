@@ -1,6 +1,9 @@
 (function() {
     angular.module("app").config(["$routeProvider", "$locationProvider", "$authProvider", function($routeProvider, $locationProvider, $authProvider) {
         $locationProvider.html5Mode(true);
+        // starting values for pagination
+        var startItem = 1;
+        var itemsPerPage = 10;
         /**
          * Helper auth functions
          */
@@ -64,7 +67,7 @@
                 resolve: {
                     loginRequired: loginRequired,
                     getProducts: ["app.product.productService", function(productService) {
-                        return productService.getProducts();
+                        return productService.getProducts(startItem, itemsPerPage);
                     }]
                 }
             })

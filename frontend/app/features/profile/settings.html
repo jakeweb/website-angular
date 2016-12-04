@@ -32,8 +32,8 @@
                 <div ng-message="pattern" class="text-danger">Enter a valid phone number</div>
             </div>
             <!-- Change password modal -->
-            <button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
-            <button type="submit" ng-disabled="settingsForm.$invalid" class="btn btn-lg  btn-block btn-success">Save</button>
+            <button type="button" class="btn btn-lg  btn-block btn-warning" ng-click="open()">Change Password</button>
+            <button type="submit" ng-disabled="settingsForm.$invalid || settingsForm.$pristine" class="btn btn-lg  btn-block btn-success">Save</button>
         </form>
     </div>
 </div>

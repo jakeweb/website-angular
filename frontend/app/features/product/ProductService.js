@@ -27,9 +27,10 @@
                     console.log(error);
                 });
         }
-        
-        this.getProducts = function() {
-            return apiService.get("products").then(function(res) {
+
+        this.getProducts = function(startItem, itemsPerPage) {
+            return apiService.get("products", { startItem, itemsPerPage }).then(function(res) {
+                    
                     return res.data;
                 })
                 .catch(function(error) {

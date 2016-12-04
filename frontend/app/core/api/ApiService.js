@@ -4,13 +4,13 @@
         .service("app.apiService", apiService);
 
     function apiService($http, baseUrl) {
-        this.get = function(url, index) {
+        this.get = function(url, obj) {
             console.log('apiService.get:', url);
             return $http({
                 method: 'GET',
                 url: baseUrl + url + '/',
                 params: {
-                    index: index
+                    data: obj
                 }
             });
         }

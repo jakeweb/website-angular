@@ -1,5 +1,13 @@
 <div class="container">
     <div class="row">
+        <form method="post" name="formPagination">
+            <label class="radio-inline">
+                <input type="radio" name="radio" ng-value="count.sm" ng-model="itemsPerPage">Value 10</label>
+            <label class="radio-inline">
+                <input type="radio" name="radio" ng-value="count.md" ng-model="itemsPerPage">Value 20</label>
+            <label class="radio-inline">
+                <input type="radio" name="radio" ng-value="count.lg" ng-model="itemsPerPage">Value 50</label>
+        </form>
         <table class="table table-hover responsive" wt-responsive-table>
             <thead>
                 <tr>
@@ -32,6 +40,7 @@
                 </tr>
             </tbody>
         </table>
+        <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" ng-change="pageChanged()"></ul>
         <a href="product/add" class="btn btn-primary btn-lg">Add product</a>
     </div>
 </div>
