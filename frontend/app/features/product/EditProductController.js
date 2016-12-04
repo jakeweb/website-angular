@@ -3,6 +3,7 @@
     editProductController.$inject = ['$scope', '$rootScope', '$routeParams', 'toastr', 'app.product.productService'];
 
     function editProductController($scope, $rootScope, $routeParams, toastr, productService) {
+        $scope.patternPrice = /^[0-9]+(\.[0-9]{1,2})?$/;
 
         var currentProduct = Number($routeParams.id) - 1;
         var itemsPerPage = null;
@@ -30,7 +31,7 @@
                     $scope.products = $rootScope.products;
                     $scope.product = $scope.products[currentProduct];
                     console.log(currentProduct);
-                    console.log($scope.products);
+                    console.log(typeof $scope.product.price);
                 })
                 .catch(function(error) {
                     toastr.error(error.data, 'Error');

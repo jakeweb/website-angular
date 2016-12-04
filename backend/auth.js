@@ -57,10 +57,12 @@ function createJWT(user, remember) {
         id: user[0].id,
         iat: moment().unix()
     };
-    if (remember == true) {
+    if (remember) {
+        console.log("remember");
         payload.exp = moment().add(14, 'days').unix();
     }
     else {
+        console.log("don't remember");
         payload.exp = moment().add(14, 'hours').unix();
     }
     return jwt.encode(payload, config.TOKEN_SECRET);

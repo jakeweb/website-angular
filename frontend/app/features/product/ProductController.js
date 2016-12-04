@@ -3,6 +3,7 @@
     productController.$inject = ['$scope', '$rootScope', '$routeParams','toastr', 'app.product.productService', "getProducts"];
 
     function productController($scope, $rootScope, $routeParams, toastr, productService, getProducts) {
+        $scope.patternPrice = /^[0-9]+(\.[0-9]{1,2})?$/;
         $rootScope.products = getProducts.data;
         $scope.products = $rootScope.products;
         $scope.totalItems = getProducts.count;

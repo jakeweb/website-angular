@@ -3,11 +3,12 @@ var async = require('async');
 var auth = new(require('./auth'));
 var users = new(require('./db/users'));
 var products = new(require('./db/products'));
+var validate = new(require("./validate"));
 var baseUrl = "/api";
 var router = {
     init: function init(app) {
 
-        app.post(baseUrl + '/auth/signup', function(req, res) {
+        app.post(baseUrl + '/auth/signup', validate.checkSignUp, function(req, res) {
             async.waterfall([
                     function(done) {
                         users.getUserByEmail(req.body).then(function(data) {
@@ -23,7 +24,6 @@ var router = {
                         });
                     },
                     function(user, done) {
-                        console.log('run2');
                         users.addUser(user).then(function() {
                             res.status(200).send("signup successfull");
                         }).catch(function(error) {
@@ -60,7 +60,7 @@ var router = {
             });
         });
 
-        app.put(baseUrl + '/settings', auth.ensureAuthenticated, function(req, res) {
+        app.put(baseUrl + '/settings', auth.ensureAuthenticated, validate.checkSettings, function(req, res) {
             users.updateUser(req.body).then(function(data) {
                 res.status(200).send(data);
             }).catch(function(error) {
@@ -68,7 +68,7 @@ var router = {
                 res.status(500).send(error);
             });
         });
-        app.put(baseUrl + '/password', auth.ensureAuthenticated, function(req, res) {
+        app.put(baseUrl + '/password', auth.ensureAuthenticated, validate.checkPassword, function(req, res) {
             req.body.password = auth.hashData(req.body.password);
             users.updatePassword(req.body).then(function(data) {
                 res.status(200).send(data);
@@ -82,7 +82,6 @@ var router = {
             var itemsPerPage = Number(req.query.itemsPerPage);
             async.waterfall([
                     function(done) {
-                        console.log('run1');
                         products.getCountProducts().then(function(data) {
                             done(null, data[0], done);
                         }).catch(function(error) {
@@ -107,7 +106,7 @@ var router = {
                     res.redirect('/');
                 });
         });
-        app.post(baseUrl + '/product', auth.ensureAuthenticated, function(req, res) {
+        app.post(baseUrl + '/product', auth.ensureAuthenticated, validate.checkProduct, function(req, res) {
             products.addProduct(req.body).then(function(data) {
                 res.status(200).send(data);
             }).catch(function(error) {
@@ -115,7 +114,7 @@ var router = {
                 res.status(500).send(error);
             });
         });
-        app.put(baseUrl + '/product', auth.ensureAuthenticated, function(req, res) {
+        app.put(baseUrl + '/product', auth.ensureAuthenticated, validate.checkProduct, function(req, res) {
             products.updateProduct(req.body).then(function(data) {
                 res.status(200).send(data);
             }).catch(function(error) {

@@ -10,17 +10,18 @@
             </div>
             <!-- Price -->
             <div class="form-group has-feedback">
-                <input class="form-control input-lg" type="number" id="price" name="price" ng-model="product.price" placeholder="Price" ng-maxlength="255" required>
+                <input class="form-control input-lg" type="text" id="price" name="price" ng-model="product.price" placeholder="Price" ng-maxlength="255" ng-pattern="patternPrice" required>
             </div>
             <div ng-messages="editProductForm.price.$error" class="help-block">
-                <div ng-message="maxlength" class="text-danger">Message must not exceed 255 characters</div>
+                <div ng-message="maxlength" class="text-danger">Price must not exceed 255 characters</div>
+                <div ng-message="pattern" class="text-danger">Enter price in format "123" or "123.23"</div>
             </div>
             <!-- description -->
             <div class="form-group has-feedback">
                 <textarea class="form-control input-lg" id="description" name="description" ng-model="product.description" ng-maxlength="1000" required></textarea>
             </div>
-            <div ng-messages="editProductForm.descriptioniption.$error" class="help-block">
-                <div ng-message="maxlength" class="text-danger">Message must not exceed 255 characters</div>
+            <div ng-messages="editProductForm.description.$error" class="help-block">
+                <div ng-message="maxlength" class="text-danger">Message must not exceed 1000 characters</div>
             </div>
             <button type="submit" ng-disabled="editProductForm.$invalid" class="btn btn-lg btn-block btn-success">Save product</button>
         </form>

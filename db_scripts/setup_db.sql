@@ -16,7 +16,7 @@ create table "users"(
 create table "products"(
   "id" serial primary key,
   "title" varchar not null,
-  "price" real not null,
+  "price" numeric(255, 2) not null,
   "description" varchar not null,
   "deleted" boolean default false
 );

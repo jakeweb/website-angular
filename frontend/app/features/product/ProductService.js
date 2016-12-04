@@ -19,15 +19,6 @@
                     toastr.error(error.data, 'Error');
                 });
         }
-        this.deleteProduct = function(product) {
-            apiService.post("product", product).then(function(res) {
-                    $location.url("/products");
-                })
-                .catch(function(error) {
-                    toastr.error(error.data, 'Error');
-                });
-        }
-
         this.getProducts = function(startItem, itemsPerPage) {
             return apiService.get("products", { startItem, itemsPerPage }).then(function(res) {
                     return res.data;
