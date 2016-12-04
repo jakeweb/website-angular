@@ -3,7 +3,10 @@ var products = function() {
     self = this;
     self.getProducts = function(startItem, itemsPerPage) {
         console.log(startItem, itemsPerPage);
-        return db.query("SELECT * FROM products ORDER BY id OFFSET ${startItem} ROWS FETCH NEXT ${itemsPerPage} ROWS ONLY;", {startItem, itemsPerPage});
+        return db.query("SELECT * FROM products ORDER BY id OFFSET ${startItem} ROWS FETCH NEXT ${itemsPerPage} ROWS ONLY;", { startItem, itemsPerPage });
+    };
+    self.getCountProducts = function() {
+        return db.query("SELECT COUNT (*) FROM products;");
     };
     self.addProduct = function(product) {
         console.log('addProduct', product);

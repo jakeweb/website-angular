@@ -2,11 +2,11 @@
     <div class="row">
         <form method="post" name="formPagination">
             <label class="radio-inline">
-                <input type="radio" name="radio" ng-value="count.sm" ng-model="itemsPerPage">Value 10</label>
+                <input type="radio" name="radio" ng-value="count.sm" ng-model="itemsPerPage" ng-change="pageChanged()">Value 10</label>
             <label class="radio-inline">
-                <input type="radio" name="radio" ng-value="count.md" ng-model="itemsPerPage">Value 20</label>
+                <input type="radio" name="radio" ng-value="count.md" ng-model="itemsPerPage" ng-change="pageChanged()">Value 20</label>
             <label class="radio-inline">
-                <input type="radio" name="radio" ng-value="count.lg" ng-model="itemsPerPage">Value 50</label>
+                <input type="radio" name="radio" ng-value="count.lg" ng-model="itemsPerPage" ng-change="pageChanged()">Value 50</label>
         </form>
         <table class="table table-hover responsive" wt-responsive-table>
             <thead>

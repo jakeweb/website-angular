@@ -3,9 +3,9 @@
     productController.$inject = ['$scope', '$location', '$auth', '$routeParams', 'app.product.productService', "getProducts"];
 
     function productController($scope, $location, $auth, $routeParams, productService, getProducts) {
-        $scope.products = getProducts;
-        $scope.totalItems = 64;
-        $scope.currentPage = 4;
+        $scope.products = getProducts.data;
+        $scope.totalItems = getProducts.count;
+        $scope.currentPage = 1;
         $scope.maxSize = 5;
         $scope.bigTotalItems = 175;
         $scope.bigCurrentPage = 1;
@@ -24,7 +24,19 @@
             $scope.currentPage = pageNo;
         }
         $scope.pageChanged = function() {
-            console.log('Page changed');
+            var startItem;
+            if ($scope.currentPage == 1) {
+                startItem = 0;
+            } else {
+                startItem = Number($scope.itemsPerPage) * ($scope.currentPage - 1);
+            }
+            productService.getProducts(startItem, $scope.itemsPerPage).then(function(response) {
+                    $scope.startItem = response.startItem;
+                    $scope.products = response.data;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
         }
     }
 

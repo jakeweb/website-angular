@@ -2,7 +2,7 @@
     angular.module("app").config(["$routeProvider", "$locationProvider", "$authProvider", function($routeProvider, $locationProvider, $authProvider) {
         $locationProvider.html5Mode(true);
         // starting values for pagination
-        var startItem = 1;
+        var startItem = 0;
         var itemsPerPage = 10;
         /**
          * Helper auth functions

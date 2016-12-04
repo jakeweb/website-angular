@@ -80,12 +80,34 @@ var router = {
         app.get(baseUrl + '/products', auth.ensureAuthenticated, function(req, res) {
             var startItem = Number(req.query.startItem);
             var itemsPerPage = Number(req.query.itemsPerPage);
-            products.getProducts(startItem, itemsPerPage).then(function(data) {
-                res.status(200).send(data);
-            }).catch(function(error) {
-                console.log(error);
-                res.status(500).send(error);
-            });
+            async.waterfall([
+                    function(done) {
+                        console.log('run1');
+                        products.getCountProducts().then(function(data) {
+                            done(null, data[0], done);
+                        }).catch(function(error) {
+                            console.log(error);
+                            res.status(500).send(error);
+                        });
+
+                    },
+                    function(count, done) {
+                        
+                        products.getProducts(startItem, itemsPerPage).then(function(data) {
+                            var response = {
+                                count: count.count,
+                                data: data
+                            }
+                            res.status(200).send(response);
+                        }).catch(function(error) {
+                            console.log(error);
+                            res.status(500).send(error);
+                        });
+                    }
+                ],
+                function(err) {
+                    res.redirect('/');
+                });
         });
         app.post(baseUrl + '/product', auth.ensureAuthenticated, function(req, res) {
             products.addProduct(req.body).then(function(data) {
