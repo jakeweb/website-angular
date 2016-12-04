@@ -1,8 +1,8 @@
 (function() {
     angular.module("app.profile").controller('app.profile.profileController', profileController);
-    profileController.$inject = ['$scope', '$location', '$auth', "$uibModal", "app.profile.profileService"];
+    profileController.$inject = ['$scope', '$location', '$auth', "$uibModal", "toastr", "app.profile.profileService"];
 
-    function profileController($scope, $location, $auth, $uibModal, profileService) {
+    function profileController($scope, $location, $auth, $uibModal, toastr, profileService) {
 
         $scope.patternPassword = /^[a-zA-Z0-9\s]{6,16}$/;
         $scope.patternEmail = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
@@ -17,7 +17,7 @@
                     $scope.user = res.data[0];
                 })
                 .catch(function(error) {
-                    console.log(error);
+                    toastr.error(error.data, 'Error');
                 });
         }
 

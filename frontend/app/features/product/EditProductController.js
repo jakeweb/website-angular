@@ -1,8 +1,8 @@
 (function() {
     angular.module("app.product").controller('app.product.editProductController', editProductController);
-    editProductController.$inject = ['$scope', '$location', '$auth', '$rootScope', '$routeParams', 'app.product.productService'];
+    editProductController.$inject = ['$scope', '$location', '$auth', '$rootScope', '$routeParams', 'toastr', 'app.product.productService'];
 
-    function editProductController($scope, $location, $auth, $rootScope, $routeParams, productService) {
+    function editProductController($scope, $location, $auth, $rootScope, $routeParams, toastr, productService) {
 
         var currentProduct = Number($routeParams.id) - 1;
         var itemsPerPage = null;
@@ -33,7 +33,7 @@
                     console.log($scope.products);
                 })
                 .catch(function(error) {
-                    console.log(error);
+                    toastr.error(error.data, 'Error');
                 });
         }
 

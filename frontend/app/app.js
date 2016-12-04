@@ -1,6 +1,7 @@
 (function() {
     angular.module("app", [
         "ngRoute",
+        "toastr",
         "satellizer",
         "ui.bootstrap",
         "ngAnimate",

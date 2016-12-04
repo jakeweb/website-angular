@@ -1,8 +1,8 @@
 (function() {
     angular.module("app.product").controller('app.product.productController', productController);
-    productController.$inject = ['$scope', '$location', '$auth', '$rootScope', '$routeParams', 'app.product.productService', "getProducts"];
+    productController.$inject = ['$scope', '$location', '$auth', '$rootScope', '$routeParams','toastr', 'app.product.productService', "getProducts"];
 
-    function productController($scope, $location, $auth, $rootScope, $routeParams, productService, getProducts) {
+    function productController($scope, $location, $auth, $rootScope, $routeParams, toastr, productService, getProducts) {
         $rootScope.products = getProducts.data;
         $scope.products = $rootScope.products;
         $scope.totalItems = getProducts.count;
@@ -38,7 +38,7 @@
                     $scope.products = $rootScope.products;
                 })
                 .catch(function(error) {
-                    console.log(error);
+                    toastr.error(error.data, 'Error');
                 });
         }
         $scope.deleteProducts = function() {
@@ -49,7 +49,7 @@
                     $scope.products = $rootScope.products;
                 })
                 .catch(function(error) {
-                    console.log(error);
+                    toastr.error(error.data, 'Error');
                 });
         }
     }

@@ -1,3 +1,3 @@
 (function() {
-    angular.module("app.register", ["ngMessages"]);
+    angular.module("app.register", []);
 })();
