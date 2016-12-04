@@ -16,16 +16,24 @@
             });
         }
         this.post = function(url, data, config) {
-            console.log('apiService.post:', url, data);
-            return $http.post( baseUrl + url + '/', data);
+            // console.log('apiService.post:', url, data);
+            return $http.post(baseUrl + url + '/', data);
         }
         this.put = function(url, data) {
-            console.log('apiService.put:', url);
+            // console.log('apiService.put:', url);
             return $http.put(baseUrl + url + '/', data);
         }
-        this.delete = function(url) {
-            console.log('apiService.delete:', url);
-            return $http.delete(baseUrl + url + '/');
+        this.delete = function(url, obj) {
+            // console.log('apiService.delete:', url);
+            return $http({
+                method: 'DELETE',
+                url: baseUrl + url + '/',
+                params: {
+                    startItem: obj.startItem,
+                    itemsPerPage: obj.itemsPerPage,
+                    products: obj.list
+                }
+            });
         }
     }
     apiService.$inject = ["$http", "baseUrl"];

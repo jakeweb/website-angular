@@ -20,6 +20,7 @@
                     </th>
                     <th></th>
                     <th></th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,10 +38,18 @@
                     <td class="text-center">
                         <a href="/product/edit/{{ ($index+1) + (currentPage - 1)*itemsPerPage }}" class="btn btn-primary">Edit product</a>
                     </td>
+                    <td>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="product.selected"></label>
+                        </div>
+
+                    </td>
                 </tr>
             </tbody>
         </table>
         <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" ng-change="pageChanged()"></ul>
         <a href="product/add" class="btn btn-primary btn-lg">Add product</a>
+        <button class="btn btn-primary btn-lg" ng-click="deleteProducts()">Delete</button>
     </div>
 </div>

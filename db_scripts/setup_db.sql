@@ -17,5 +17,6 @@ create table "products"(
   "id" serial primary key,
   "title" varchar not null,
   "price" real not null,
-  "description" varchar not null
+  "description" varchar not null,
+  "deleted" boolean default false
 );

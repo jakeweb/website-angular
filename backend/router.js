@@ -7,7 +7,7 @@ var baseUrl = "/api";
 var router = {
     init: function init(app) {
 
-        app.post('/auth/signup', function(req, res) {
+        app.post(baseUrl + '/auth/signup', function(req, res) {
             async.waterfall([
                     function(done) {
                         users.getUserByEmail(req.body.email).then(function(data) {
@@ -89,10 +89,8 @@ var router = {
                             console.log(error);
                             res.status(500).send(error);
                         });
-
                     },
                     function(count, done) {
-                        
                         products.getProducts(startItem, itemsPerPage).then(function(data) {
                             var response = {
                                 count: count.count,
@@ -124,6 +122,51 @@ var router = {
                 console.log(error);
                 res.status(500).send(error);
             });
+        });
+        app.delete(baseUrl + '/products', auth.ensureAuthenticated, function(req, res) {
+            var startItem = Number(req.query.startItem);
+            var itemsPerPage = Number(req.query.itemsPerPage);
+            
+            var list = [];
+            for (var i = req.query.products.length - 1; i >= 0; i--) {
+                list.push(Number(req.query.products[i]));
+            }
+            async.waterfall([
+                    // delete products
+                    function(done) {
+                        products.deleteProducts(list).then(function() {
+                            done(null);
+                        }).catch(function(error) {
+                            console.log(error);
+                            res.status(500).send(error);
+                        });
+                    },
+                    // get new count of products
+                    function(done) {
+                        products.getCountProducts().then(function(data) {
+                            done(null, data[0], done);
+                        }).catch(function(error) {
+                            console.log(error);
+                            res.status(500).send(error);
+                        });
+                    },
+                    // get products new list
+                    function(count, done) {
+                        products.getProducts(startItem, itemsPerPage).then(function(data) {
+                            var response = {
+                                count: count.count,
+                                data: data
+                            }
+                            res.status(200).send(response);
+                        }).catch(function(error) {
+                            console.log(error);
+                            res.status(500).send(error);
+                        });
+                    }
+                ],
+                function(err) {
+                    res.redirect('/');
+                });
         });
         app.get('*', function(req, res) {
             res.status(200).sendFile(path.resolve('frontend/app/index.html'));

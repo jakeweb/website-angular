@@ -4,9 +4,6 @@
 
     function editProductController($scope, $location, $auth, $rootScope, $routeParams, productService) {
 
-
-
-        // var currentProduct = parseInt((pseudoCurrentPage - parseInt(pseudoCurrentPage) - 1) * 10);
         var currentProduct = Number($routeParams.id) - 1;
         var itemsPerPage = null;
 

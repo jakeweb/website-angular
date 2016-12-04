@@ -33,7 +33,18 @@
         $scope.pageChanged = function() {
             var startItem = Number($scope.itemsPerPage) * ($scope.currentPage - 1);
             productService.getProducts(startItem, $scope.itemsPerPage).then(function(response) {
-                    $scope.startItem = response.startItem;
+                    $scope.totalItems = response.count;
+                    $rootScope.products = response.data;
+                    $scope.products = $rootScope.products;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
+        $scope.deleteProducts = function() {
+            var startItem = Number($scope.itemsPerPage) * ($scope.currentPage - 1);
+            productService.deleteProducts(startItem, $scope.itemsPerPage, $scope.products).then(function(response) {
+                    $scope.totalItems = response.count;
                     $rootScope.products = response.data;
                     $scope.products = $rootScope.products;
                 })

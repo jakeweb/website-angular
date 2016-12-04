@@ -36,6 +36,25 @@
                     console.log(error);
                 });
         }
+        this.deleteProducts = function(startItem, itemsPerPage, products) {
+            var list = [];
+            angular.forEach(products, function(value, key) {
+                if (value.selected) {
+                    list.push(value.id);
+                }
+            });
+            var obj = {
+                startItem: startItem,
+                itemsPerPage: itemsPerPage,
+                list: list
+            }
+            return apiService.delete("products", obj).then(function(res) {
+                    return res.data;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
     }
 
 })();
