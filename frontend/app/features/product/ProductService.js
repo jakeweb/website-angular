@@ -1,14 +1,14 @@
 (function() {
     angular.module("app.product").service('app.product.productService', productService);
-    productService.$inject = ['$location', '$auth', 'app.apiService'];
+    productService.$inject = ['$location', 'toastr', 'app.apiService'];
 
-    function productService($location, $auth, apiService) {
+    function productService($location, toastr, apiService) {
         this.addProduct = function(product) {
             apiService.post("product", product).then(function(res) {
                     $location.url("/products");
                 })
                 .catch(function(error) {
-                    console.log(error);
+                    toastr.error(error.data, 'Error');
                 });
         }
         this.updateProduct = function(product) {
@@ -16,7 +16,7 @@
                     $location.url("/products");
                 })
                 .catch(function(error) {
-                    console.log(error);
+                    toastr.error(error.data, 'Error');
                 });
         }
         this.deleteProduct = function(product) {
@@ -24,7 +24,7 @@
                     $location.url("/products");
                 })
                 .catch(function(error) {
-                    console.log(error);
+                    toastr.error(error.data, 'Error');
                 });
         }
 
@@ -33,7 +33,7 @@
                     return res.data;
                 })
                 .catch(function(error) {
-                    console.log(error);
+                    toastr.error(error.data, 'Error');
                 });
         }
         this.deleteProducts = function(startItem, itemsPerPage, products) {
@@ -52,7 +52,7 @@
                     return res.data;
                 })
                 .catch(function(error) {
-                    console.log(error);
+                    toastr.error(error.data, 'Error');
                 });
         }
     }

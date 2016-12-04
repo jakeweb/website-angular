@@ -1,8 +1,8 @@
 (function() {
     angular.module("app.product").controller('app.product.productController', productController);
-    productController.$inject = ['$scope', '$location', '$auth', '$rootScope', '$routeParams','toastr', 'app.product.productService', "getProducts"];
+    productController.$inject = ['$scope', '$rootScope', '$routeParams','toastr', 'app.product.productService', "getProducts"];
 
-    function productController($scope, $location, $auth, $rootScope, $routeParams, toastr, productService, getProducts) {
+    function productController($scope, $rootScope, $routeParams, toastr, productService, getProducts) {
         $rootScope.products = getProducts.data;
         $scope.products = $rootScope.products;
         $scope.totalItems = getProducts.count;
