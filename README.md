@@ -6,7 +6,6 @@
 * Navigate to the project folder
 * Install node modules by running `npm install`
 * Install bower components by running `bower install`
-* Install the heroku toolbelt following the recommendations here: https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
 * Launch the project locally by running the following command: `npm start`
 
 ##Installation local PostgreSQL
@@ -28,5 +27,5 @@
 * `postgres://postgres-user-name : password @127.0.0.1/db-angular`
 * where
 * `postgres-user-name` - your postres user name
-* password - password for this user name
-* db-angular - the name of database
+* `password` - password for this user name
+* `db-angular` - the name of database
