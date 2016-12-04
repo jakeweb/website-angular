@@ -4,13 +4,11 @@ var users = function() {
     self.getUserById = function(id) {
         console.log('getUserById typo', typeof(id));
         console.log('getUserById', id);
-        return db.query("SELECT \"full_name\",\"id\",\"role\",\"avatar\",\"email\" FROM \"users\" WHERE \"id\" = " + id + ";");
+        return db.query("SELECT * FROM users WHERE id = ${id};", { id: id });
     };
     self.getUserByEmail = function(email) {
         console.log('getUserByEmail', email);
-        return db.query("SELECT * FROM users WHERE email = ${email};", {
-            email: email
-        });
+        return db.query("SELECT * FROM users WHERE email = ${email};", { email: email });
     };
     self.addUser = function(user) {
         console.log('addUser', user);

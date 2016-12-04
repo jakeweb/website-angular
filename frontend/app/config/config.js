@@ -26,10 +26,6 @@
         }];
 
         $routeProvider
-            .when("/", {
-                templateUrl: "./app/features/main/main.html",
-                controller: "app.main.mainController"
-            })
             .when("/login", {
                 templateUrl: "./app/features/login/login.html",
                 controller: "app.login.loginController",
@@ -62,18 +58,34 @@
                     loginRequired: loginRequired
                 }
             })
+            .when("/products", {
+                templateUrl: "./app/features/product/productsList.html",
+                controller: "app.product.productController",
+                resolve: {
+                    loginRequired: loginRequired,
+                    getProducts: ["app.product.productService", function(productService) {
+                        return productService.getProducts();
+                    }]
+                }
+            })
             .when("/product/add", {
                 templateUrl: "./app/features/product/product.html",
                 controller: "app.product.productController",
                 resolve: {
-                    loginRequired: loginRequired
+                    loginRequired: loginRequired,
+                    getProducts: ["app.product.productService", function(productService) {
+                        return productService.getProducts();
+                    }]
                 }
             })
             .when("/product/edit/:id", {
-                templateUrl: "./app/features/product/product.html",
-                controller: "app.product.productController",
+                templateUrl: "./app/features/product/editProduct.html",
+                controller: "app.product.editProductController",
                 resolve: {
-                    loginRequired: loginRequired
+                    loginRequired: loginRequired,
+                    getProducts: ["app.product.productService", function(productService) {
+                        return productService.getProducts();
+                    }]
                 }
             })
             .otherwise({

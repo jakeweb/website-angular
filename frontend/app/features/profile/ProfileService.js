@@ -3,9 +3,11 @@
     profileService.$inject = ['$location', '$auth', 'app.apiService'];
 
     function profileService($location, $auth, apiService) {
+        this.getUserInfo = function() {
+            return apiService.get("profile");
+        }
         this.update = function(user) {
-            console.log(user);
-            apiService.put("/settings", user).then(function(res) {
+            apiService.put("settings", user).then(function(res) {
                     console.log(res);
                 })
                 .catch(function(error) {

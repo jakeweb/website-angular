@@ -2,7 +2,7 @@ var db = require("./connection");
 var products = function() {
     self = this;
     self.getProducts = function() {
-        return db.query("SELECT * FROM \"products\";");
+        return db.query("SELECT * FROM \"products\" ORDER BY id;");
     };
     self.addProduct = function(product) {
         console.log('addProduct', product);
@@ -10,7 +10,7 @@ var products = function() {
     };
     self.updateProduct = function(product) {
         console.log("updateProduct", product);
-        return db.query("UPDATE products SET title = ${title}, price = ${price}, description = ${description} WHERE id = ${productID};", product);
+        return db.query("UPDATE products SET title = ${title}, price = ${price}, description = ${description} WHERE id = ${id};", product);
     };
 };
 

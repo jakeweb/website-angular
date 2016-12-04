@@ -6,8 +6,7 @@
         this.login = function(user) {
             $auth.login(user)
                 .then(function(res) {
-                    console.log(res.data);
-                    localStorage.setItem("email", res.data.user.email);
+                    localStorage.setItem("user", JSON.stringify(res.data.user));
                     $location.path('/');
                 })
                 .catch(function(error) {

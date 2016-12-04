@@ -13,8 +13,11 @@ var auth = function() {
         console.log(data);
         if (bcrypt.compareSync(req.password, data[0].password)) {
             response.user = data[0];
-            response.user.password = 'SECRET!!!';
             response.token = createJWT(data);
+            // delete important data
+            delete response.user.password;
+            delete response.user.id;
+            
             return response;
         } else {
             return false;

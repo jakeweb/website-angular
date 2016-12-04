@@ -3,7 +3,7 @@ var async = require('async');
 var auth = new(require('./auth'));
 var users = new(require('./db/users'));
 var products = new(require('./db/products'));
-
+var baseUrl = "/api";
 var router = {
     init: function init(app) {
 
@@ -52,7 +52,19 @@ var router = {
                 res.status(500).send(error);
             });
         });
-        app.put('/settings', auth.ensureAuthenticated, function(req, res) {
+        app.get(baseUrl + '/profile', auth.ensureAuthenticated, function(req, res) {
+            users.getUserById(req.body.userID).then(function(data) {
+                // console.log(data);
+                delete data[0].password;
+                delete data[0].id;
+                res.status(200).send(data);
+            }).catch(function(error) {
+                console.log(error);
+                res.status(500).send(error);
+            });
+        });
+
+        app.put(baseUrl + '/settings', auth.ensureAuthenticated, function(req, res) {
             users.updateUser(req.body).then(function(data) {
                 res.status(200).send(data);
             }).catch(function(error) {
@@ -60,8 +72,25 @@ var router = {
                 res.status(500).send(error);
             });
         });
-        app.post('/product', auth.ensureAuthenticated, function(req, res) {
+        app.get(baseUrl + '/products', auth.ensureAuthenticated, function(req, res) {
+            products.getProducts(req.body).then(function(data) {
+                console.log(data);
+                res.status(200).send(data);
+            }).catch(function(error) {
+                console.log(error);
+                res.status(500).send(error);
+            });
+        });
+        app.post(baseUrl + '/product', auth.ensureAuthenticated, function(req, res) {
             products.addProduct(req.body).then(function(data) {
+                res.status(200).send(data);
+            }).catch(function(error) {
+                console.log(error);
+                res.status(500).send(error);
+            });
+        });
+        app.put(baseUrl + '/product', auth.ensureAuthenticated, function(req, res) {
+            products.updateProduct(req.body).then(function(data) {
                 res.status(200).send(data);
             }).catch(function(error) {
                 console.log(error);
