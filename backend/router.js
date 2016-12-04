@@ -78,8 +78,9 @@ var router = {
             });
         });
         app.get(baseUrl + '/products', auth.ensureAuthenticated, function(req, res) {
-            products.getProducts(req.body).then(function(data) {
-                console.log(data);
+            var startItem = Number(req.query.startItem);
+            var itemsPerPage = Number(req.query.itemsPerPage);
+            products.getProducts(startItem, itemsPerPage).then(function(data) {
                 res.status(200).send(data);
             }).catch(function(error) {
                 console.log(error);

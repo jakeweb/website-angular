@@ -77,7 +77,7 @@
                 resolve: {
                     loginRequired: loginRequired,
                     getProducts: ["app.product.productService", function(productService) {
-                        return productService.getProducts();
+                        return productService.getProducts(startItem, itemsPerPage);
                     }]
                 }
             })
@@ -87,7 +87,7 @@
                 resolve: {
                     loginRequired: loginRequired,
                     getProducts: ["app.product.productService", function(productService) {
-                        return productService.getProducts();
+                        return productService.getProducts(startItem, itemsPerPage);
                     }]
                 }
             })

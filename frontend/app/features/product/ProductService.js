@@ -30,7 +30,6 @@
 
         this.getProducts = function(startItem, itemsPerPage) {
             return apiService.get("products", { startItem, itemsPerPage }).then(function(res) {
-                    
                     return res.data;
                 })
                 .catch(function(error) {

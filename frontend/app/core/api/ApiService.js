@@ -5,12 +5,13 @@
 
     function apiService($http, baseUrl) {
         this.get = function(url, obj) {
-            console.log('apiService.get:', url);
+            console.log('apiService.get:', obj);
             return $http({
                 method: 'GET',
                 url: baseUrl + url + '/',
                 params: {
-                    data: obj
+                    startItem: obj.startItem,
+                    itemsPerPage: obj.itemsPerPage
                 }
             });
         }

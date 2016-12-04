@@ -1,8 +1,9 @@
 var db = require("./connection");
 var products = function() {
     self = this;
-    self.getProducts = function() {
-        return db.query("SELECT * FROM \"products\" ORDER BY id;");
+    self.getProducts = function(startItem, itemsPerPage) {
+        console.log(startItem, itemsPerPage);
+        return db.query("SELECT * FROM products ORDER BY id OFFSET ${startItem} ROWS FETCH NEXT ${itemsPerPage} ROWS ONLY;", {startItem, itemsPerPage});
     };
     self.addProduct = function(product) {
         console.log('addProduct', product);
