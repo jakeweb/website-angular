@@ -5,19 +5,19 @@ var bcrypt = require('bcrypt-nodejs');
 var config = require("./config");
 
 var auth = function() {
-    this.login = function(data, req) {
+    this.login = function(dataFromDB, req) {
         var response = {
             user: {},
             token: ''
         };
-        console.log(data);
-        if (bcrypt.compareSync(req.password, data[0].password)) {
-            response.user = data[0];
-            response.token = createJWT(data);
+        console.log(dataFromDB);
+        if (bcrypt.compareSync(req.user.password, dataFromDB[0].password)) {
+            response.user = dataFromDB[0];
+            response.token = createJWT(dataFromDB, req.remember);
             // delete important data
             delete response.user.password;
             delete response.user.id;
-            
+
             return response;
         } else {
             return false;
@@ -52,12 +52,17 @@ var auth = function() {
 
 };
 
-function createJWT(user) {
+function createJWT(user, remember) {
     var payload = {
         id: user[0].id,
-        iat: moment().unix(),
-        exp: moment().add(14, 'days').unix()
+        iat: moment().unix()
     };
+    if (remember == true) {
+        payload.exp = moment().add(14, 'days').unix();
+    }
+    else {
+        payload.exp = moment().add(14, 'hours').unix();
+    }
     return jwt.encode(payload, config.TOKEN_SECRET);
 }
 

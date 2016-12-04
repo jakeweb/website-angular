@@ -37,8 +37,8 @@ var router = {
                 });
         });
         app.post('/auth/login', function(req, res) {
-            users.getUserByEmail(req.body.email).then(function(data) {
-                var response = auth.login(data, req.body);
+            users.getUserByEmail(req.body.user).then(function(dataFromDB) {
+                var response = auth.login(dataFromDB, req.body);
                 if (response) {
                     res.status(200).send(response);
                 } else {
@@ -126,7 +126,7 @@ var router = {
         app.delete(baseUrl + '/products', auth.ensureAuthenticated, function(req, res) {
             var startItem = Number(req.query.startItem);
             var itemsPerPage = Number(req.query.itemsPerPage);
-            
+
             var list = [];
             for (var i = req.query.products.length - 1; i >= 0; i--) {
                 list.push(Number(req.query.products[i]));

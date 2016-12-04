@@ -6,9 +6,9 @@ var users = function() {
         console.log('getUserById', id);
         return db.query("SELECT * FROM users WHERE id = ${id};", { id: id });
     };
-    self.getUserByEmail = function(email) {
-        console.log('getUserByEmail', email);
-        return db.query("SELECT * FROM users WHERE email = ${email};", { email: email });
+    self.getUserByEmail = function(user) {
+        console.log('getUserByEmail', user);
+        return db.query("SELECT * FROM users WHERE email = ${email};", user);
     };
     self.addUser = function(user) {
         console.log('addUser', user);

@@ -6,7 +6,7 @@ var products = function() {
         return db.query("SELECT * FROM products WHERE (deleted = false) ORDER BY id OFFSET ${startItem} ROWS FETCH NEXT ${itemsPerPage} ROWS ONLY;", { startItem, itemsPerPage });
     };
     self.getCountProducts = function() {
-        return db.query("SELECT COUNT (*) FROM products;");
+        return db.query("SELECT COUNT (*) FROM products WHERE (deleted = false);");
     };
     self.addProduct = function(product) {
         console.log('addProduct', product);
@@ -18,7 +18,7 @@ var products = function() {
     };
     self.deleteProducts = function(products) {
         console.log("deleteProducts", products);
-        return db.query("UPDATE products SET deleted = true WHERE id  IN(" + products + ");");
+        return db.query("UPDATE products SET deleted = true WHERE id IN(" + products + ");");
     };
 };
 
