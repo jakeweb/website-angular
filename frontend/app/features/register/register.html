@@ -1,35 +1,34 @@
-<div class="container">
-    <div class="row">
-        <form method="post" ng-submit="signup()" name="signupForm" class="form">
-            <!-- Email -->
-            <div class="form-group has-feedback"">
-                <input class="form-control input-lg" type="email" id="email" name="email" ng-model="user.email" ng-pattern="patternEmail" placeholder="Email" required>
-                <div ng-messages="signupForm.email.$error" class="input-helper text-danger">
-                    <div ng-message="required">Your email address is required.</div>
-                    <div ng-message="pattern">Your email address is invalid.</div>
+<div class="aligner">
+    <div class="container">
+        <div class="row">
+            <h2 class="text-center">Create new account</h2>
+            <form method="post" ng-submit="signup()" name="signupForm" class="form">
+                <!-- Email -->
+                <div class="form-group has-feedback" ">
+                <input class="form-control input-lg " type="email " id="email " name="email " ng-model="user.email " ng-pattern="patternEmail " placeholder="Email " required>
+                <div ng-messages="signupForm.email.$error " class="input-helper text-danger ">
+                    <div ng-message="required ">Your email address is required.</div>
+                    <div ng-message="pattern ">Your email address is invalid.</div>
                 </div>
             </div>
-            
             <!-- Password -->
-            <div class="form-group has-feedback">
-                <input password-strength class="form-control input-lg" type="password" name="password" ng-model="user.password" ng-pattern="patternPassword" placeholder="Password" required>
-                <div ng-messages="signupForm.password.$error" class="input-helper text-danger">
-                    <div ng-message="required">Password is required.</div>
-                    <div ng-message="pattern">Password must be between 6 and 16 characters. Allow only latin and number symbols.</div>
+            <div class="form-group has-feedback ">
+                <input password-strength class="form-control input-lg " type="password " name="password " ng-model="user.password " ng-pattern="patternPassword " placeholder="Password " required>
+                <div ng-messages="signupForm.password.$error " class="input-helper text-danger ">
+                    <div ng-message="required ">Password is required.</div>
+                    <div ng-message="pattern ">Password must be between 6 and 16 characters. Allow only latin and number symbols.</div>
                 </div>
             </div>
-            
             <!-- Repeat Password -->
-            <div class="form-group has-feedback">
-                <input password-match="user.password" class="form-control input-lg" type="password" name="confirmPassword" ng-model="confirmPassword" ng-pattern="{{user.password}}" placeholder="Confirm Password" required>
-                <div ng-messages="signupForm.confirmPassword.$error" class="input-helper text-danger">
-                    <div ng-message="pattern">Password must match.</div>
+            <div class="form-group has-feedback ">
+                <input password-match="user.password " class="form-control input-lg " type="password " name="confirmPassword " ng-model="confirmPassword " ng-pattern="{{user.password}} " placeholder="Confirm Password " required>
+                <div ng-messages="signupForm.confirmPassword.$error " class="input-helper text-danger ">
+                    <div ng-message="required ">Repeat password.</div>
+                    <div ng-message="pattern ">Password must match.</div>
                 </div>
             </div>
-            
-            <button type="submit" ng-disabled="signupForm.$invalid" class="btn btn-lg btn-block btn-primary">Sign up</button>
+            <button type="submit " ng-disabled="signupForm.$invalid " class="btn btn-lg btn-block btn-primary ">Sign up</button>
         </form>
-
-
     </div>
+</div> 
 </div>
