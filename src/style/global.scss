@@ -1,19 +1,20 @@
 a:hover,
 a:focus,
 a:active {
-	text-decoration: none;
+    text-decoration: none;
 }
-ul {
-	padding: 0;
-	list-style: none;
-}
-.aligner {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+
+body,
+html {
     height: 100%;
-    margin-top: -$navigation-min-height;
-    padding-top: $navigation-min-height; 
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+.container {
+	width: 100%;
+	max-width: 1140px;
+	margin: 0 auto;
 }

@@ -1,0 +1,22 @@
+.main {
+    position: relative;
+    height: 100%;
+    margin-top: -$navigation-min-height;
+    padding-top: $navigation-min-height;
+    .aligner {
+        position: absolute;
+        top: -$navigation-min-height;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 0;
+        min-height: 0;
+        margin: auto;
+    }
+    .self-bottom {
+        position: absolute;
+        bottom: 30px;
+        margin: 0 auto;
+
+    }
+}

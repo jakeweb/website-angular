@@ -1,55 +1,56 @@
 <div class="container">
-    <div class="row">
-        <form method="post" name="formPagination">
-            <label class="radio-inline">
-                <input type="radio" name="radio" ng-value="count.sm" ng-model="itemsPerPage" ng-change="pageChanged()">Value 10</label>
-            <label class="radio-inline">
-                <input type="radio" name="radio" ng-value="count.md" ng-model="itemsPerPage" ng-change="pageChanged()">Value 20</label>
-            <label class="radio-inline">
-                <input type="radio" name="radio" ng-value="count.lg" ng-model="itemsPerPage" ng-change="pageChanged()">Value 50</label>
-        </form>
-        <table class="table table-hover responsive" wt-responsive-table>
-            <thead>
-                <tr>
-                    <th class="cursor-pointer">№ </th>
-                    <th default-sorting="product.title" table-sorting="product.title" class="cursor-pointer">Title
-                        <arrow-sorting ng-if="predicate === 'product.title'"></arrow-sorting>
-                    </th>
-                    <th table-sorting="product.price" class="cursor-pointer">Price
-                        <arrow-sorting ng-if="predicate === 'product.price'"></arrow-sorting>
-                    </th>
-                    <th></th>
-                    <th></th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="product in products | orderBy:predicate:reverseSort track by $index" class="row-item">
-                    <td>{{ ($index+1) + (currentPage - 1)*itemsPerPage }}</td>
-                    <td>{{ product.title }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>
-                        <uib-accordion>
-                            <div uib-accordion-group class="panel-default" heading="Description">
-                                {{product.description}}
-                            </div>
-                        </uib-accordion>
-                    </td>
-                    <td class="text-center">
-                        <a href="/product/edit/{{ ($index+1) + (currentPage - 1)*itemsPerPage }}" class="btn btn-primary">Edit product</a>
-                    </td>
-                    <td>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" ng-model="product.selected"></label>
+    <p class="h2 text-center">Items per page</p>
+    <form method="post" name="formPagination" class="text-center">
+        <label class="radio-inline">
+            <input type="radio" name="radio" ng-value="count.sm" ng-model="itemsPerPage" ng-change="pageChanged()">Value 10</label>
+        <label class="radio-inline">
+            <input type="radio" name="radio" ng-value="count.md" ng-model="itemsPerPage" ng-change="pageChanged()">Value 20</label>
+        <label class="radio-inline">
+            <input type="radio" name="radio" ng-value="count.lg" ng-model="itemsPerPage" ng-change="pageChanged()">Value 50</label>
+    </form>
+    <table class="table table-hover responsive" wt-responsive-table>
+        <thead>
+            <tr>
+                <th class="cursor-pointer">№ </th>
+                <th default-sorting="product.title" table-sorting="product.title" class="cursor-pointer">Title
+                    <arrow-sorting ng-if="predicate === 'product.title'"></arrow-sorting>
+                </th>
+                <th table-sorting="product.price" class="cursor-pointer">Price
+                    <arrow-sorting ng-if="predicate === 'product.price'"></arrow-sorting>
+                </th>
+                <th></th>
+                <th></th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="product in products | orderBy:predicate:reverseSort track by $index" class="row-item">
+                <td>{{ ($index+1) + (currentPage - 1)*itemsPerPage }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.price }}</td>
+                <td>
+                    <uib-accordion>
+                        <div uib-accordion-group class="panel-default" heading="Description">
+                            {{product.description}}
                         </div>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" ng-change="pageChanged()"></ul>
-        <a href="product/add" class="btn btn-primary btn-lg">Add product</a>
-        <button class="btn btn-primary btn-lg" ng-click="deleteProducts()">Delete</button>
+                    </uib-accordion>
+                </td>
+                <td class="text-center">
+                    <a href="/product/edit/{{ ($index+1) + (currentPage - 1)*itemsPerPage }}" class="btn btn-primary">Edit product</a>
+                </td>
+                <td>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="product.selected">
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" ng-change="pageChanged()" class="self-bottom"></ul>
+    <div class="text-center">
+        <a href="product/add" class="btn btn-success btn-lg">Add product</a>
+        <button class="btn btn-danger btn-lg" ng-click="deleteProducts()">Delete</button>
     </div>
 </div>
