@@ -1,0 +1,26 @@
+.navigation {
+	position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: $navigation-min-height;
+    margin: 0;
+    background: $navigation-bg;
+    font-size: $navigation-font-size;
+    font-family: $navigation-font-family;
+    border-radius: 4px;
+    z-index: 1;
+    .navigation__item {
+        margin-right: auto;
+        margin-left: auto;
+        text-transform: uppercase;
+        a {
+            color: #fff;
+            transition: $transition;
+            &:hover {
+            	color: lighten($navigation-bg, 20%);
+            	transition: $transition;
+            }
+        }
+    }
+}

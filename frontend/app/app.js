@@ -9,7 +9,6 @@
         "ngMessages",
         "app.register",
         "app.login",
-        "app.main",
         "app.profile",
         "app.product"
     ]);

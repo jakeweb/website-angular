@@ -22,42 +22,28 @@
     <header>
         <div class="container">
             <div class="row">
-                <nav ng-controller="app.navbarController" class="navbar navbar-default">
+                <nav ng-controller="app.navbarController">
                     <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="/">Brand</a>
-                        </div>
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="register" ng-if="!isAuthenticated()">Register</a></li>
-                                <li><a href="login" ng-if="!isAuthenticated()">Login</a></li>
-                                <li><a href="profile" ng-if="isAuthenticated()">Profile</a></li>
-                                <li><a href="logout" ng-if="isAuthenticated()">Logout</a></li>
-                            </ul>
-                        </div>
-                        <!-- /.navbar-collapse -->
+                        <ul class="navigation">
+                            <li class="navigation__item"><a class="" href="/">Main</a></li>
+                            <li class="navigation__item" ng-cloak ng-if="!isAuthenticated()"><a href="register">Register</a></li>
+                            <li class="navigation__item" ng-cloak ng-if="!isAuthenticated()"><a href="login" >Login</a></li>
+                            <li class="navigation__item" ng-cloak ng-if="isAuthenticated()"><a href="profile">Profile</a></li>
+                            <li class="navigation__item" ng-cloak ng-if="isAuthenticated()"><a href="logout" >Logout</a></li>
+                        </ul>
                     </div>
                     <!-- /.container-fluid -->
                 </nav>
             </div>
         </div>
     </header>
-    <main>
+    <main class="main">
         <div ng-view></div>
     </main>
     <footer></footer>
     <link rel="stylesheet" href="./build/css/main.css">
     <link rel="stylesheet" href="./build/css/angular-toastr.min.css">
     <link rel="stylesheet" href="./build/css/angular-responsive-tables.min.css">
-    
     <script type="text/javascript" src="./app/app.js"></script>
     <!-- Core -->
     <script type="text/javascript" src="./app/config/config.js"></script>
@@ -68,9 +54,6 @@
     <script type="text/javascript" src="./app/core/directives/arrow-sorting.js"></script>
     <script type="text/javascript" src="./app/core/directives/default-sorting.js"></script>
     <script type="text/javascript" src="./app/core/directives/table-sorting.js"></script>
-    <script type="text/javascript" src="./app/features/main/MainModule.js"></script>
-    <script type="text/javascript" src="./app/features/main/MainController.js"></script>
-    <script type="text/javascript" src="./app/features/main/MainService.js"></script>
     <!-- Profile -->
     <script type="text/javascript" src="./app/features/profile/ProfileModule.js"></script>
     <script type="text/javascript" src="./app/features/profile/ProfileController.js"></script>

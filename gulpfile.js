@@ -10,7 +10,8 @@ var path = {
     build: { //building files
         js: 'frontend/build/js/',
         css: 'frontend/build/css/',
-        fonts: 'frontend/build/fonts/bootstrap/'
+        fontsBootstrap: 'frontend/build/fonts/bootstrap/',
+        fonts: 'frontend/build/fonts/'
     },
     copy: { //building files
         js: 'src/js/',
@@ -22,7 +23,8 @@ var path = {
     src: { //source files
         style: 'src/style/main.scss',
         bootstrap: 'src/style/bootstrap/',
-        js: ['src/js/**/*.js']
+        js: 'src/js/**/*.js',
+        fonts: 'src/fonts/**/*'
     },
     lib: { //source files
         js: ['bower_components/angular/angular.js',
@@ -69,8 +71,12 @@ gulp.task('css:copy', function() { //copy css directly from bower_components to 
     gulp.src(path.lib.css)
         .pipe(gulp.dest(path.build.css))
 });
-gulp.task('fonts:build', function() {
+gulp.task('fonts:build', function() { //copy bootstrap to build
     gulp.src(path.lib.fonts)
+        .pipe(gulp.dest(path.build.fontsBootstrap))
+});
+gulp.task('fonts:copy', function() { //copy custom fonts from src/fonts to build
+    gulp.src(path.src.fonts)
         .pipe(gulp.dest(path.build.fonts))
 });
 gulp.task('js:build', function() {
@@ -89,6 +95,7 @@ gulp.task('build', function() {
         'bootstrap:copy',
         'js:build',
         'fonts:build',
+        'fonts:copy',
         'css:copy',
         'style:build')
 });
