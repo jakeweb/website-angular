@@ -32,8 +32,10 @@ var path = {
             'bower_components/angular-responsive-tables/release/angular-responsive-tables.js',
             'bower_components/angular-messages/angular-messages.js'
         ],
-        fonts: ['bower_components/bootstrap-sass/assets/fonts/bootstrap/**/*'],
-        css: ['bower_components/angular-toastr/dist/angular-toastr.min.css']
+        fonts: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/**/*',
+        css: ['bower_components/angular-toastr/dist/angular-toastr.min.css',
+            'bower_components/angular-responsive-tables/release/angular-responsive-tables.min.css'
+        ]
     },
     watch: { //watch changes form those files
         style: 'src/style/**/*.scss'
@@ -49,7 +51,7 @@ gulp.task('style:build', function() {
 });
 gulp.task('lib:copy', function() {
     gulp.src(path.lib.js)
-        .pipe(gulp.dest(path.copy.js)) 
+        .pipe(gulp.dest(path.copy.js))
 });
 gulp.task('css:copy', function() {
     gulp.src(path.lib.css)
