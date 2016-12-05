@@ -1,32 +1,33 @@
 {
-    "name": "website-angular",
-    "description": "single page application on angularjs",
-    "version": "0.0.0",
-    "main": "index.js",
-    "authors": [
-        "Yevhenii Tanasiichuk"
-    ],
-    "license": "ISC",
-    "scripts": {
-        "start": "node ./backend/index.js",
-        "postinstall": "bower install && gulp"
-    },
-    "repository": {
-        "type": "git",
-        "url": "github.com/jakeweb/website-angular/repository.git"
-    },
-    "dependencies": {
-        "async": "^2.1.4",
-        "async-waterfall": "^0.1.5",
-        "bcrypt-nodejs": "0.0.3",
-        "body-parser": "^1.15.2",
-        "bower": "^1.8.0",
-        "express": "~4.14.0",
-        "jwt-simple": "^0.5.1",
-        "moment": "^2.17.0",
-        "pg-promise": "^5.4.5",
-        "gulp": "^3.9.1",
-        "gulp-sass": "^2.3.2",
-        "gulp-watch": "^4.3.11"
-    }
+  "name": "website-angular",
+  "description": "single page application on angularjs",
+  "version": "0.0.0",
+  "main": "index.js",
+  "authors": [
+    "Yevhenii Tanasiichuk"
+  ],
+  "license": "ISC",
+  "scripts": {
+    "start": "node ./backend/index.js",
+    "postinstall": "bower install && gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/jakeweb/website-angular/repository.git"
+  },
+  "dependencies": {
+    "async": "^2.1.4",
+    "async-waterfall": "^0.1.5",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "bower": "^1.8.0",
+    "express": "~4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-jsmin": "^0.1.5",
+    "gulp-sass": "^2.3.2",
+    "gulp-watch": "^4.3.11",
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.17.0",
+    "pg-promise": "^5.4.5"
+  }
 }
