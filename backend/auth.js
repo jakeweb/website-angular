@@ -30,6 +30,7 @@ var auth = function() {
     }
     this.ensureAuthenticated = function(req, res, next) {
         if (!req.header('Authorization')) {
+            return res.status(401).send('Please sign in to the website');
         }
         var token = req.header('Authorization').split(' ')[1];
         var payload = null;
