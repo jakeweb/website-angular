@@ -29,6 +29,16 @@
         }];
 
         $routeProvider
+            .when("/", {
+                templateUrl: "./app/features/product/productsList.html",
+                controller: "app.product.productController",
+                resolve: {
+                    loginRequired: loginRequired,
+                    getProducts: ["app.product.productService", function(productService) {
+                        return productService.getProducts(startItem, itemsPerPage);
+                    }]
+                }
+            })
             .when("/login", {
                 templateUrl: "./app/features/login/login.html",
                 controller: "app.login.loginController",
@@ -59,16 +69,6 @@
                 controller: "app.profile.profileController",
                 resolve: {
                     loginRequired: loginRequired
-                }
-            })
-            .when("/products", {
-                templateUrl: "./app/features/product/productsList.html",
-                controller: "app.product.productController",
-                resolve: {
-                    loginRequired: loginRequired,
-                    getProducts: ["app.product.productService", function(productService) {
-                        return productService.getProducts(startItem, itemsPerPage);
-                    }]
                 }
             })
             .when("/product/add", {

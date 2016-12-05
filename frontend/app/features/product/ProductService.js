@@ -5,7 +5,7 @@
     function productService($location, toastr, apiService) {
         this.addProduct = function(product) {
             apiService.post("product", product).then(function(res) {
-                    $location.url("/products");
+                    $location.url("/");
                 })
                 .catch(function(error) {
                     toastr.error(error.data, 'Error');
@@ -13,7 +13,7 @@
         }
         this.updateProduct = function(product) {
             apiService.put("product", product).then(function(res) {
-                    $location.url("/products");
+                    $location.url("/");
                 })
                 .catch(function(error) {
                     toastr.error(error.data, 'Error');

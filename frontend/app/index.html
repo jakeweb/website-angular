@@ -16,7 +16,6 @@
     <script src="./build/js/angular-messages.js"></script>
     <script src="./build/js/angular-toastr.tpls.js"></script>
     <script src="./build/js/angular-responsive-tables.js"></script>
-    <!-- <script src="./build/js/satellizer.js.map"></script> -->
 </head>
 
 <body>
@@ -40,7 +39,6 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="register" ng-if="!isAuthenticated()">Register</a></li>
                                 <li><a href="login" ng-if="!isAuthenticated()">Login</a></li>
-                                <li><a href="products" ng-if="isAuthenticated()">Products</a></li>
                                 <li><a href="profile" ng-if="isAuthenticated()">Profile</a></li>
                                 <li><a href="logout" ng-if="isAuthenticated()">Logout</a></li>
                             </ul>
