@@ -12,10 +12,15 @@ var path = {
         fonts: 'frontend/build/fonts/bootstrap/'
     },
     copy: { //building files
-        js: 'src/js/'
+        js: 'src/js/',
+        css: ['bower_components/angular-toastr/dist/angular-toastr.min.css',
+            'bower_components/angular-responsive-tables/release/angular-responsive-tables.min.css',
+            'bower_components/bootstrap-sass/assets/stylesheets/**/*'
+        ]
     },
     src: { //source files
         style: 'src/style/main.scss',
+        bootstrap: 'src/style/bootstrap/',
         js: ['src/js/**/*.js']
     },
     lib: { //source files
@@ -35,7 +40,8 @@ var path = {
         fonts: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/**/*',
         css: ['bower_components/angular-toastr/dist/angular-toastr.min.css',
             'bower_components/angular-responsive-tables/release/angular-responsive-tables.min.css'
-        ]
+        ],
+        bootstrap: 'bower_components/bootstrap-sass/assets/stylesheets/**/*'
     },
     watch: { //watch changes form those files
         style: 'src/style/**/*.scss'
@@ -49,11 +55,15 @@ gulp.task('style:build', function() {
         .pipe(sass()) //compile
         .pipe(gulp.dest(path.build.css)) //put compiled files to the build
 });
+gulp.task('bootstrap:copy', function() { //copy bootstrap scss from bower_components to src
+    gulp.src(path.lib.bootstrap)
+        .pipe(gulp.dest(path.src.bootstrap))
+});
 gulp.task('lib:copy', function() {
     gulp.src(path.lib.js)
         .pipe(gulp.dest(path.copy.js))
 });
-gulp.task('css:copy', function() {
+gulp.task('css:copy', function() { //copy css directly from bower_components to build
     gulp.src(path.lib.css)
         .pipe(gulp.dest(path.build.css))
 });
@@ -74,6 +84,7 @@ gulp.task('watch', function() {
 
 gulp.task('build', [
     'lib:copy',
+    'bootstrap:copy',
     'css:copy',
     'js:build',
     'style:build',
