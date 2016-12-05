@@ -21,20 +21,18 @@
 <body>
     <header>
         <div class="container">
-            <div class="row">
-                <nav ng-controller="app.navbarController">
-                    <div class="container-fluid">
-                        <ul class="navigation">
-                            <li class="navigation__item"><a class="" href="/">Main</a></li>
-                            <li class="navigation__item" ng-cloak ng-if="!isAuthenticated()"><a href="register">Register</a></li>
-                            <li class="navigation__item" ng-cloak ng-if="!isAuthenticated()"><a href="login" >Login</a></li>
-                            <li class="navigation__item" ng-cloak ng-if="isAuthenticated()"><a href="profile">Profile</a></li>
-                            <li class="navigation__item" ng-cloak ng-if="isAuthenticated()"><a href="logout" >Logout</a></li>
-                        </ul>
-                    </div>
-                    <!-- /.container-fluid -->
-                </nav>
-            </div>
+            <nav ng-controller="app.navbarController">
+                <div class="container-fluid">
+                    <ul class="navigation">
+                        <li class="navigation__item"><a class="" href="/">Main</a></li>
+                        <li class="navigation__item" ng-cloak ng-if="!isAuthenticated()"><a href="register">Register</a></li>
+                        <li class="navigation__item" ng-cloak ng-if="!isAuthenticated()"><a href="login">Login</a></li>
+                        <li class="navigation__item" ng-cloak ng-if="isAuthenticated()"><a href="profile">Profile</a></li>
+                        <li class="navigation__item" ng-cloak ng-if="isAuthenticated()"><a href="logout">Logout</a></li>
+                    </ul>
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
         </div>
     </header>
     <main class="main">
@@ -42,7 +40,6 @@
     </main>
     <div id="toastr-container"></div>
     <footer></footer>
-    
     <link rel="stylesheet" href="./build/css/angular-toastr.min.css">
     <link rel="stylesheet" href="./build/css/angular-responsive-tables.min.css">
     <link rel="stylesheet" href="./build/css/main.css">
