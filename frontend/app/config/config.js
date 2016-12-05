@@ -1,5 +1,5 @@
 (function() {
-    angular.module("app").config(["$routeProvider", "$locationProvider", "$authProvider", function($routeProvider, $locationProvider, $authProvider) {
+    angular.module("app").config(["$routeProvider", "$locationProvider", "$authProvider", "toastrConfig", function($routeProvider, $locationProvider, $authProvider, toastrConfig) {
         $locationProvider.html5Mode(true);
         // starting values for pagination
         var startItem = 0;
@@ -27,6 +27,19 @@
             }
             return deferred.promise;
         }];
+        /**
+         * Toastr 
+         */
+        angular.extend(toastrConfig, {
+            autoDismiss: false,
+            containerId: 'toast-container',
+            maxOpened: 0,
+            newestOnTop: true,
+            positionClass: 'toast-top-right',
+            preventDuplicates: false,
+            preventOpenDuplicates: false,
+            target: '#toastr-container'
+        });
 
         $routeProvider
             .when("/", {

@@ -1,5 +1,5 @@
 .navigation {
-	position: relative;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,6 +10,9 @@
     font-family: $navigation-font-family;
     border-radius: 4px;
     z-index: 1;
+    @media screen and (max-width: 480px) {
+        font-size: $navigation-font-size-sm;
+    }
     .navigation__item {
         margin-right: auto;
         margin-left: auto;
@@ -18,8 +21,8 @@
             color: #fff;
             transition: $transition;
             &:hover {
-            	color: lighten($navigation-bg, 20%);
-            	transition: $transition;
+                color: lighten($navigation-bg, 20%);
+                transition: $transition;
             }
         }
     }

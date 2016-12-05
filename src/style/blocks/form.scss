@@ -1,0 +1,11 @@
+.form {
+    .form-group {
+        position: relative;
+        .input-helper {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 12px;
+        }
+    }
+}

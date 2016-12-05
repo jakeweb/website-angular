@@ -13,7 +13,10 @@
                     </div>
                     <!-- Password -->
                     <div class="form-group has-feedback">
-                        <input class="form-control input-lg" type="password" name="password" ng-model="user.password" placeholder="Password" required>
+                        <input class="form-control input-lg" type="password" name="password" ng-model="user.password" placeholder="Password" ng-pattern="patternPassword" required>
+                    </div>
+                    <div ng-messages="loginForm.password.$error" class="help-block">
+                        <div ng-message="pattern" class="text-danger">Password must be between 6 and 16 characters. Allow only latin and number symbols.</div>
                     </div>
                     <div class="checkbox">
                         <label>

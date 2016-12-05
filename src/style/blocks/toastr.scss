@@ -1,0 +1,18 @@
+#toastr-container {
+    position: fixed;
+    bottom: 30px;
+    right: 15px;
+    @media screen and (max-width: 480px) {
+        right: 0;
+        left: 0;
+    }
+}
+
+#toast-container {
+    position: relative;
+    bottom: 0;
+    @media screen and (max-width: 480px) {
+        left: 12px;
+        margin: auto;
+    }
+}
