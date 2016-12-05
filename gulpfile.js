@@ -3,7 +3,8 @@
 var gulp = require('gulp'),
     watch = require('gulp-watch'),
     sass = require('gulp-sass'),
-    jsmin = require('gulp-jsmin');
+    jsmin = require('gulp-jsmin'),
+    runSequence = require('run-sequence');
 
 var path = {
     build: { //building files
@@ -53,7 +54,8 @@ var path = {
 gulp.task('style:build', function() {
     gulp.src(path.src.style) //get main.scss
         .pipe(sass()) //compile
-        .pipe(gulp.dest(path.build.css)) //put compiled files to the build
+        .pipe(gulp.dest(path.build.css)); //put compiled files to the build
+
 });
 gulp.task('bootstrap:copy', function() { //copy bootstrap scss from bower_components to src
     gulp.src(path.lib.bootstrap)
@@ -82,13 +84,13 @@ gulp.task('watch', function() {
 
 /*Run task*/
 
-gulp.task('build', [
-    'lib:copy',
-    'bootstrap:copy',
-    'css:copy',
-    'js:build',
-    'style:build',
-    'fonts:build'
-]);
+gulp.task('build', function() {
+    runSequence('lib:copy',
+        'bootstrap:copy',
+        'js:build',
+        'fonts:build',
+        'css:copy',
+        'style:build')
+});
 
 gulp.task('default', ['build']);
