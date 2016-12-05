@@ -5,7 +5,7 @@
     padding-top: $navigation-min-height;
     .aligner {
         position: absolute;
-        top: -$navigation-min-height;
+        top: -$navigation-min-height*2.5;
         left: 0;
         right: 0;
         bottom: 0;

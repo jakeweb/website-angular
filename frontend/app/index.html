@@ -20,20 +20,15 @@
 
 <body>
     <header>
-        <div class="container">
-            <nav ng-controller="app.navbarController">
-                <div class="container-fluid">
-                    <ul class="navigation">
-                        <li class="navigation__item"><a class="" href="/">Main</a></li>
-                        <li class="navigation__item" ng-cloak ng-if="!isAuthenticated()"><a href="register">Register</a></li>
-                        <li class="navigation__item" ng-cloak ng-if="!isAuthenticated()"><a href="login">Login</a></li>
-                        <li class="navigation__item" ng-cloak ng-if="isAuthenticated()"><a href="profile">Profile</a></li>
-                        <li class="navigation__item" ng-cloak ng-if="isAuthenticated()"><a href="logout">Logout</a></li>
-                    </ul>
-                </div>
-                <!-- /.container-fluid -->
-            </nav>
-        </div>
+        <nav ng-controller="app.navbarController">
+            <ul class="navigation">
+                <li class="navigation__item"><a class="" href="/">Main</a></li>
+                <li class="navigation__item" ng-cloak ng-if="!isAuthenticated()"><a href="register">Register</a></li>
+                <li class="navigation__item" ng-cloak ng-if="!isAuthenticated()"><a href="login">Login</a></li>
+                <li class="navigation__item" ng-cloak ng-if="isAuthenticated()"><a href="profile">Profile</a></li>
+                <li class="navigation__item" ng-cloak ng-if="isAuthenticated()"><a href="logout">Logout</a></li>
+            </ul>
+        </nav>
     </header>
     <main class="main">
         <div ng-view></div>

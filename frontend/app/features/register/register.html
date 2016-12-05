@@ -1,8 +1,9 @@
 <div class="aligner">
-    <h2 class="text-center">Create new account</h2>
-    <form method="post" ng-submit="signup()" name="signupForm" class="form">
-        <!-- Email -->
-        <div class="form-group has-feedback" ">
+    <div class="container">
+        <h2 class="text-center">Create new account</h2>
+        <form method="post" ng-submit="signup()" name="signupForm" class="form">
+            <!-- Email -->
+            <div class="form-group has-feedback" ">
                 <input class="form-control input-lg " type="email " id="email " name="email " ng-model="user.email " ng-pattern="patternEmail " placeholder="Email " required>
                 <div ng-messages="signupForm.email.$error " class="input-helper text-danger ">
                     <div ng-message="required ">Your email address is required.</div>
@@ -27,4 +28,6 @@
             </div>
             <button type="submit " ng-disabled="signupForm.$invalid " class="btn btn-lg btn-block btn-primary ">Sign up</button>
         </form>
+</div>
+
 </div>

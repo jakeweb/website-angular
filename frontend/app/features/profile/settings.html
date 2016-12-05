@@ -1,40 +1,38 @@
 <div class="aligner">
     <div class="container">
-        <div class="row">
-            <form method="post" ng-submit="updateProfile()" name="settingsForm" class="form">
-                <!-- First Name -->
-                <div class="form-group has-feedback">
-                    <input class="form-control input-lg" type="text" id="firstName" name="firstName" ng-model="user.firstName" ng-maxlength="255" placeholder="First Name" value="{{user.firstName}}" >
-                    <div ng-messages="settingsForm.firstName.$error" class="text-danger input-helper">
-                        <div ng-message="maxlength">Message must not exceed 255 characters</div>
-                    </div>
+        <form method="post" ng-submit="updateProfile()" name="settingsForm" class="form">
+            <!-- First Name -->
+            <div class="form-group has-feedback">
+                <input class="form-control input-lg" type="text" id="firstName" name="firstName" ng-model="user.firstName" ng-maxlength="255" placeholder="First Name" value="{{user.firstName}}">
+                <div ng-messages="settingsForm.firstName.$error" class="text-danger input-helper">
+                    <div ng-message="maxlength">Message must not exceed 255 characters</div>
                 </div>
-                <!-- Last Name -->
-                <div class="form-group has-feedback">
-                    <input class="form-control input-lg" type="text" id="lastName" name="lastName" ng-model="user.lastName" ng-maxlength="255" placeholder="Last Name" value="{{user.lastName}}">
-                    <div ng-messages="settingsForm.lastName.$error" class="text-danger input-helper">
-                        <div ng-message="maxlength">Message must not exceed 255 characters</div>
-                    </div>
+            </div>
+            <!-- Last Name -->
+            <div class="form-group has-feedback">
+                <input class="form-control input-lg" type="text" id="lastName" name="lastName" ng-model="user.lastName" ng-maxlength="255" placeholder="Last Name" value="{{user.lastName}}">
+                <div ng-messages="settingsForm.lastName.$error" class="text-danger input-helper">
+                    <div ng-message="maxlength">Message must not exceed 255 characters</div>
                 </div>
-                <!-- Email -->
-                <div class="form-group has-feedback">
-                    <input class="form-control input-lg" type="email" id="email" name="email" ng-model="user.email" ng-pattern="patternEmail" placeholder="Email" value="{{user.email}}" required>
-                    <div ng-messages="settingsForm.email.$error" class="text-danger input-helper">
-                        <div ng-message="required">This field is required</div>
-                        <div ng-message="pattern">Enter a valid email address</div>
-                    </div>
+            </div>
+            <!-- Email -->
+            <div class="form-group has-feedback">
+                <input class="form-control input-lg" type="email" id="email" name="email" ng-model="user.email" ng-pattern="patternEmail" placeholder="Email" value="{{user.email}}" required>
+                <div ng-messages="settingsForm.email.$error" class="text-danger input-helper">
+                    <div ng-message="required">This field is required</div>
+                    <div ng-message="pattern">Enter a valid email address</div>
                 </div>
-                <!-- Phone -->
-                <div class="form-group has-feedback">
-                    <input class="form-control input-lg" type="text" id="phone" name="phone" ng-model="user.phone" ng-pattern="patternPhone" placeholder="Phone" value="{{user.phone}}">
-                    <div ng-messages="settingsForm.phone.$error" class="text-danger input-helper">
-                        <div ng-message="pattern">Enter a valid phone number</div>
-                    </div>
+            </div>
+            <!-- Phone -->
+            <div class="form-group has-feedback">
+                <input class="form-control input-lg" type="text" id="phone" name="phone" ng-model="user.phone" ng-pattern="patternPhone" placeholder="Phone" value="{{user.phone}}">
+                <div ng-messages="settingsForm.phone.$error" class="text-danger input-helper">
+                    <div ng-message="pattern">Enter a valid phone number</div>
                 </div>
-                <!-- Change password modal -->
-                <button type="button" class="btn btn-lg  btn-block btn-primary" ng-click="open()">Change Password</button>
-                <button type="submit" ng-disabled="settingsForm.$invalid || settingsForm.$pristine" class="btn btn-lg  btn-block btn-success">Save</button>
-            </form>
-        </div>
+            </div>
+            <!-- Change password modal -->
+            <button type="button" class="btn btn-lg  btn-block btn-primary" ng-click="open()">Change Password</button>
+            <button type="submit" ng-disabled="settingsForm.$invalid || settingsForm.$pristine" class="btn btn-lg  btn-block btn-success">Save</button>
+        </form>
     </div>
 </div>
