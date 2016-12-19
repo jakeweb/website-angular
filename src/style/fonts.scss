@@ -1,8 +1,13 @@
 @font-face {
     font-family: 'BrandonGrotesque-Regular';
-    src: url('../fonts/BrandonGrotesque-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/BrandonGrotesque-Regular.otf') format('opentype'), 
-    url('../fonts/BrandonGrotesque-Regular.woff') format('woff'), url('../fonts/BrandonGrotesque-Regular.ttf') format('truetype'), 
-    url('../fonts/BrandonGrotesque-Regular.svg#BrandonGrotesque-Regular') format('svg');
+    src: url('../fonts/BrandonGrotesque-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/BrandonGrotesque-Regular.otf') format('opentype'), url('../fonts/BrandonGrotesque-Regular.woff') format('woff'), url('../fonts/BrandonGrotesque-Regular.ttf') format('truetype'), url('../fonts/BrandonGrotesque-Regular.svg#BrandonGrotesque-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('../fonts/OpenSans.eot?#iefix') format('embedded-opentype'), url('../fonts/OpenSans.otf') format('opentype'), url('../fonts/OpenSans.woff') format('woff'), url('../fonts/OpenSans.ttf') format('truetype'), url('../fonts/OpenSans.svg#OpenSans') format('svg');
     font-weight: normal;
     font-style: normal;
 }

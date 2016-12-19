@@ -18,7 +18,7 @@
     <script src="./build/js/angular-responsive-tables.js"></script>
 </head>
 
-<body>
+<body class="wrapper">
     <header>
         <nav ng-controller="app.navbarController">
             <ul class="navigation">
@@ -31,7 +31,7 @@
         </nav>
     </header>
     <main class="main">
-        <div ng-view></div>
+        <div ng-view class="aligner"></div>
     </main>
     <div id="toastr-container"></div>
     <footer></footer>
